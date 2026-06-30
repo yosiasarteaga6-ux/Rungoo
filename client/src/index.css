@@ -1,43 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --verde-principal: #2ecc71;
-  --verde-oscuro: #27ae60;
-  --texto: #2c3e50;
-  --fuente-pro: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+@import "tailwindcss/utilities";
 
 body {
   margin: 0;
-  font-family: var(--fuente-pro), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--texto);
   overscroll-behavior-y: none;
   touch-action: manipulation;
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Clase global reutilizable */
-.btn-verde {
-  background-color: var(--verde-principal);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-verde:hover {
-  background-color: var(--verde-oscuro);
-  transform: scale(1.05);
-}
 /* ========================================================
    THEME VARIABLES (Rutaexpress Oscuro & Claro)
    ======================================================== */
@@ -112,12 +89,6 @@ code {
   --text-muted: rgba(30, 41, 59, 0.6);
   --sidebar-bg: rgba(226, 232, 240, 0.8);
   --input-bg: rgba(255, 255, 255, 0.6);
-}
-
-body {
-  /* background-color: var(--bg-color); Removido para que el fondo sea visible */
-  color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Imagen de fondo principal con desenfoque */
