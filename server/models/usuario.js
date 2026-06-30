@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 
 const UsuarioSchema = new mongoose.Schema({
@@ -16,10 +17,10 @@ const UsuarioSchema = new mongoose.Schema({
 	fechaRegistro: { type: Date, default: Date.now },
 });
 
-UsuarioSchema.pre("save", async function (next) {
-	if (!this.isModified("clave")) return next();
+UsuarioSchema.pre("save", async function () {
+	if (this.isModified("clave"));
 	this.clave = await bcrypt.hash(this.clave, 10);
-	next();
+	return this;
 });
 
 export const Usuario = mongoose.model("Usuario", UsuarioSchema);

@@ -1,121 +1,133 @@
 @import "tailwindcss/utilities";
 
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior-y: none;
-  touch-action: manipulation;
-  color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
+	margin: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overscroll-behavior-y: none;
+	touch-action: manipulation;
+	color: var(--text-main);
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family:
+		source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 /* ========================================================
    THEME VARIABLES (Rutaexpress Oscuro & Claro)
    ======================================================== */
-:root, [data-theme="dark"] {
-  --neon-card-bg: rgba(15, 23, 42, 0.65);
-  --neon-header-bg: rgba(255,255,255,0.05);
-  --neon-header-border: rgba(255,255,255,0.1);
-  --neon-progress-track: rgba(255,255,255,0.1);
-  --neon-text-num: var(--text-main);
-  
-  /* Green (Card 1) */
-  --neon-card1-border: rgba(16, 185, 129, 0.4);
-  --neon-card1-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 15px rgba(16, 185, 129, 0.2), inset 0 0 20px rgba(16, 185, 129, 0.05);
-  --neon-icon1-bg: rgba(16, 185, 129, 0.2);
-  --neon-icon1-color: #10b981;
-  --neon-blob1: rgba(16, 185, 129, 0.15);
-  
-  /* Yellow (Card 2) */
-  --neon-card2-border: rgba(245, 158, 11, 0.4);
-  --neon-card2-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 15px rgba(245, 158, 11, 0.2), inset 0 0 20px rgba(245, 158, 11, 0.05);
-  --neon-icon2-bg: rgba(245, 158, 11, 0.2);
-  --neon-icon2-color: #f59e0b;
-  --neon-blob2: rgba(245, 158, 11, 0.12);
-  
-  /* Red (Card 3) */
-  --neon-card3-border: rgba(239, 68, 68, 0.4);
-  --neon-card3-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 15px rgba(239, 68, 68, 0.2), inset 0 0 20px rgba(239, 68, 68, 0.05);
-  --neon-icon3-bg: rgba(239, 68, 68, 0.2);
-  --neon-icon3-color: #ef4444;
-  --neon-blob3: rgba(239, 68, 68, 0.12);
+:root,
+[data-theme="dark"] {
+	--neon-card-bg: rgba(15, 23, 42, 0.65);
+	--neon-header-bg: rgba(255, 255, 255, 0.05);
+	--neon-header-border: rgba(255, 255, 255, 0.1);
+	--neon-progress-track: rgba(255, 255, 255, 0.1);
+	--neon-text-num: var(--text-main);
 
-/* Dark Mode (Default) */
-  --bg-color: #0F172A; /* Navy */
-  --card-bg: rgba(71, 85, 105, 0.45); /* Slate #475569 with opacity */
-  --card-border: rgba(255, 255, 255, 0.1);
-  --primary-color: #2563EB; /* Royal Blue */
-  --primary-glow: rgba(37, 99, 235, 0.3);
-  --secondary-color: #7DD3FC; /* Sky Blue */
-  --text-main: #FFFFFF;
-  --text-muted: rgba(255, 255, 255, 0.6);
-  --sidebar-bg: rgba(15, 23, 42, 0.6);
-  --input-bg: rgba(71, 85, 105, 0.3);
+	/* Green (Card 1) */
+	--neon-card1-border: rgba(16, 185, 129, 0.4);
+	--neon-card1-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(16, 185, 129, 0.2),
+		inset 0 0 20px rgba(16, 185, 129, 0.05);
+	--neon-icon1-bg: rgba(16, 185, 129, 0.2);
+	--neon-icon1-color: #10b981;
+	--neon-blob1: rgba(16, 185, 129, 0.15);
+
+	/* Yellow (Card 2) */
+	--neon-card2-border: rgba(245, 158, 11, 0.4);
+	--neon-card2-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(245, 158, 11, 0.2),
+		inset 0 0 20px rgba(245, 158, 11, 0.05);
+	--neon-icon2-bg: rgba(245, 158, 11, 0.2);
+	--neon-icon2-color: #f59e0b;
+	--neon-blob2: rgba(245, 158, 11, 0.12);
+
+	/* Red (Card 3) */
+	--neon-card3-border: rgba(239, 68, 68, 0.4);
+	--neon-card3-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(239, 68, 68, 0.2),
+		inset 0 0 20px rgba(239, 68, 68, 0.05);
+	--neon-icon3-bg: rgba(239, 68, 68, 0.2);
+	--neon-icon3-color: #ef4444;
+	--neon-blob3: rgba(239, 68, 68, 0.12);
+
+	/* Dark Mode (Default) */
+	--bg-color: #0f172a; /* Navy */
+	--card-bg: rgba(71, 85, 105, 0.45); /* Slate #475569 with opacity */
+	--card-border: rgba(255, 255, 255, 0.1);
+	--primary-color: #2563eb; /* Royal Blue */
+	--primary-glow: rgba(37, 99, 235, 0.3);
+	--secondary-color: #7dd3fc; /* Sky Blue */
+	--text-main: #ffffff;
+	--text-muted: rgba(255, 255, 255, 0.6);
+	--sidebar-bg: rgba(15, 23, 42, 0.6);
+	--input-bg: rgba(71, 85, 105, 0.3);
 }
 
 [data-theme="light"] {
-  --neon-card-bg: rgba(255, 255, 255, 0.85);
-  --neon-card-border: rgba(37, 99, 235, 0.3);
-  --neon-card-border-alert: rgba(37, 99, 235, 0.3);
-  --neon-shadow: 0 8px 32px rgba(37, 99, 235, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.5);
-  --neon-shadow-alert: 0 8px 32px rgba(37, 99, 235, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.5);
-  --neon-text-num: #1E3A8A;
-  --neon-icon-bg: #2563EB;
-  --neon-icon-color: #FFFFFF;
-  --neon-icon-bg-alert: #0F172A;
-  --neon-icon-color-alert: #FFFFFF;
-  --neon-blob1: rgba(37, 99, 235, 0.15);
-  --neon-blob2: rgba(37, 99, 235, 0.15);
-  --neon-header-bg: rgba(255,255,255,0.9);
-  --neon-header-border: #E2E8F0;
-  --neon-progress-track: rgba(0,0,0,0.1);
-  --neon-progress-fill: #2563EB;
-  --neon-progress-fill-alert: #0F172A;
+	--neon-card-bg: rgba(255, 255, 255, 0.85);
+	--neon-card-border: rgba(37, 99, 235, 0.3);
+	--neon-card-border-alert: rgba(37, 99, 235, 0.3);
+	--neon-shadow:
+		0 8px 32px rgba(37, 99, 235, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.5);
+	--neon-shadow-alert:
+		0 8px 32px rgba(37, 99, 235, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.5);
+	--neon-text-num: #1e3a8a;
+	--neon-icon-bg: #2563eb;
+	--neon-icon-color: #ffffff;
+	--neon-icon-bg-alert: #0f172a;
+	--neon-icon-color-alert: #ffffff;
+	--neon-blob1: rgba(37, 99, 235, 0.15);
+	--neon-blob2: rgba(37, 99, 235, 0.15);
+	--neon-header-bg: rgba(255, 255, 255, 0.9);
+	--neon-header-border: #e2e8f0;
+	--neon-progress-track: rgba(0, 0, 0, 0.1);
+	--neon-progress-fill: #2563eb;
+	--neon-progress-fill-alert: #0f172a;
 
-  /* Light Mode */
-  --bg-color: #E0F2FE; /* Light Sky Blue */
-  --card-bg: rgba(255, 255, 255, 0.95); /* Neutral Gray #E2E8F0 with opacity */
-  --card-border: rgba(0, 0, 0, 0.1);
-  --primary-color: #2563EB; /* Electric Blue */
-  --primary-glow: rgba(37, 99, 235, 0.3);
-  --secondary-color: #475569; /* Slate */
-  --text-main: #1E293B; /* Dark Navy Text */
-  --text-muted: rgba(30, 41, 59, 0.6);
-  --sidebar-bg: rgba(226, 232, 240, 0.8);
-  --input-bg: rgba(255, 255, 255, 0.6);
+	/* Light Mode */
+	--bg-color: #e0f2fe; /* Light Sky Blue */
+	--card-bg: rgba(255, 255, 255, 0.95); /* Neutral Gray #E2E8F0 with opacity */
+	--card-border: rgba(0, 0, 0, 0.1);
+	--primary-color: #2563eb; /* Electric Blue */
+	--primary-glow: rgba(37, 99, 235, 0.3);
+	--secondary-color: #475569; /* Slate */
+	--text-main: #1e293b; /* Dark Navy Text */
+	--text-muted: rgba(30, 41, 59, 0.6);
+	--sidebar-bg: rgba(226, 232, 240, 0.8);
+	--input-bg: rgba(255, 255, 255, 0.6);
 }
 
 /* Imagen de fondo principal con desenfoque */
 body::before {
-  content: "";
-  position: fixed;
-  top: -5%;
-  left: -5%;
-  width: 110vw;
-  height: 110vh;
-  background-image: url('./fondo.png'); /* Usa la imagen copiada */
-  background-size: cover;
-  background-position: center;
-  z-index: -2;
-  pointer-events: none;
+	content: "";
+	position: fixed;
+	top: -5%;
+	left: -5%;
+	width: 110vw;
+	height: 110vh;
+	background-image: url("./fondo.png"); /* Usa la imagen copiada */
+	background-size: cover;
+	background-position: center;
+	z-index: -2;
+	pointer-events: none;
 }
 
 /* Capa de color semitransparente para mantener la legibilidad y el tema oscuro/claro */
 body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--bg-color);
-  opacity: 0.75; /* Puedes ajustar este número entre 0.1 y 0.9 para hacer el fondo más o menos visible */
-  z-index: -1;
-  pointer-events: none;
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--bg-color);
+	opacity: 0.75; /* Puedes ajustar este número entre 0.1 y 0.9 para hacer el fondo más o menos visible */
+	z-index: -1;
+	pointer-events: none;
 }
