@@ -18,8 +18,9 @@ const UsuarioSchema = new mongoose.Schema({
 });
 
 UsuarioSchema.pre("save", async function () {
-	if (this.isModified("clave"));
-	this.clave = await bcrypt.hash(this.clave, 10);
+	if (this.isModified("clave")) {
+		this.clave = await bcrypt.hash(this.clave, 10);
+	}
 	return this;
 });
 
