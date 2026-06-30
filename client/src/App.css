@@ -55,14 +55,14 @@
 
 /* Mapa en Modo Claro */
 [data-theme="light"] .App::after {
-	background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e0/OpenStreetMap_Mapnik_Example.png");
+	background-image: url("/fondo.png");
 	opacity: 0.3;
 }
 
 /* Mapa en Modo Oscuro */
 :root .App::after,
 [data-theme="dark"] .App::after {
-	background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e0/OpenStreetMap_Mapnik_Example.png");
+	background-image: url("/fondo.png");
 	opacity: 0.08;
 	filter: invert(1) hue-rotate(180deg) contrast(1.2);
 }

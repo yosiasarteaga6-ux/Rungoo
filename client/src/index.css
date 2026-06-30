@@ -111,7 +111,7 @@ body::before {
 	left: -5%;
 	width: 110vw;
 	height: 110vh;
-	background-image: url("./fondo.png"); /* Usa la imagen copiada */
+	background-image: url("/fondo.png"); /* Usa la imagen copiada */
 	background-size: cover;
 	background-position: center;
 	z-index: -2;
