@@ -16,4 +16,10 @@ const UsuarioSchema = new mongoose.Schema({
 	fechaRegistro: { type: Date, default: Date.now },
 });
 
+UsuarioSchema.pre("save", async function (next) {
+	if (!this.isModified("clave")) return next();
+	this.clave = await bcrypt.hash(this.clave, 10);
+	next();
+});
+
 export const Usuario = mongoose.model("Usuario", UsuarioSchema);

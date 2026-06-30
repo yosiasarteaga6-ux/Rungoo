@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import cors from "cors";
 import express from "express";
 import { conectarDB } from "./db.js";
@@ -22,7 +23,12 @@ app.post("/api/usuarios", async (req, res) => {
 		const { nombre, rol, usuario, clave } = req.body;
 
 		// Creamos el nuevo documento
-		const nuevoUsuario = new Usuario({ nombre, rol, usuario, clave });
+		const nuevoUsuario = new Usuario({
+			nombre,
+			rol,
+			usuario,
+			clave,
+		});
 
 		// Lo guardamos en la base de datos
 		await nuevoUsuario.save();
@@ -42,31 +48,35 @@ app.post("/api/login", async (req, res) => {
 	try {
 		const { usuario, clave } = req.body;
 
-		// Buscamos un usuario que coincida
-		const usuarioEncontrado = await Usuario.findOne({ usuario, clave });
-
-		if (usuarioEncontrado) {
-			// Si existe y la clave es correcta
-			res.status(200).json({
-				mensaje: "Login exitoso",
-				usuario: {
-					_id: usuarioEncontrado._id,
-					nombre: usuarioEncontrado.nombre,
-					apellido: usuarioEncontrado.apellido,
-					cedula: usuarioEncontrado.cedula,
-					telefono: usuarioEncontrado.telefono,
-					direccion: usuarioEncontrado.direccion,
-					correo: usuarioEncontrado.correo,
-					rol: usuarioEncontrado.rol,
-					usuario: usuarioEncontrado.usuario,
-					preguntaSeguridad: usuarioEncontrado.preguntaSeguridad,
-					perfilCompletado: usuarioEncontrado.perfilCompletado,
-				},
-			});
-		} else {
-			// Si no existe o la clave es incorrecta
+		// Buscamos un usuario que coincida y verifiquemos el hash de la clave
+		const usuarioEncontrado = await Usuario.findOne({ usuario });
+		if (!usuarioEncontrado) {
 			res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
+			return;
 		}
+		const claveCorrecta = await bcrypt.compare(clave, usuarioEncontrado.clave);
+		if (!claveCorrecta) {
+			res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
+			return;
+		}
+
+		// Si existe y la clave es correcta
+		res.status(200).json({
+			mensaje: "Login exitoso",
+			usuario: {
+				_id: usuarioEncontrado._id,
+				nombre: usuarioEncontrado.nombre,
+				apellido: usuarioEncontrado.apellido,
+				cedula: usuarioEncontrado.cedula,
+				telefono: usuarioEncontrado.telefono,
+				direccion: usuarioEncontrado.direccion,
+				correo: usuarioEncontrado.correo,
+				rol: usuarioEncontrado.rol,
+				usuario: usuarioEncontrado.usuario,
+				preguntaSeguridad: usuarioEncontrado.preguntaSeguridad,
+				perfilCompletado: usuarioEncontrado.perfilCompletado,
+			},
+		});
 	} catch (error) {
 		console.error("Error en login:", error);
 		res
@@ -289,20 +299,24 @@ app.put("/api/llegadas/:id", async (req, res) => {
 app.post("/api/verify-admin", async (req, res) => {
 	try {
 		const { usuario, clave } = req.body;
-		const adminEncontrado = await Usuario.findOne({
-			usuario,
-			clave,
-			rol: "admin",
-		});
-
-		if (adminEncontrado) {
-			res.status(200).json({ autorizado: true, mensaje: "Permiso concedido" });
-		} else {
+		const adminEncontrado = await Usuario.findOne({ usuario, rol: "admin" });
+		if (!adminEncontrado) {
 			res.status(401).json({
 				autorizado: false,
 				mensaje: "Credenciales de administrador inválidas",
 			});
+			return;
 		}
+		const claveCorrecta = await bcrypt.compare(clave, adminEncontrado.clave);
+		if (!claveCorrecta) {
+			res.status(401).json({
+				autorizado: false,
+				mensaje: "Credenciales de administrador inválidas",
+			});
+			return;
+		}
+
+		res.status(200).json({ autorizado: true, mensaje: "Permiso concedido" });
 	} catch (error) {
 		res
 			.status(500)
