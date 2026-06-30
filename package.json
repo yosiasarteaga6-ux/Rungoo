@@ -1,17 +1,19 @@
 {
-  "name": "proyecto-rutaexpress",
-  "version": "0.1.0",
-  "private": true,
-  "workspaces": ["client", "server"],
-  "scripts": {
-    "start": "npm --prefix client start",
-    "server": "node --env-file=.env server/index.js",
-    "dev": "concurrently \"npm --prefix client start\" \"npm run server\"",
-    "build": "npm --prefix client run build",
-    "test": "npm --prefix client test",
-    "audit": "npm audit fix --prefix client"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
-  }
+	"name": "ruta-express",
+	"version": "1.0.0",
+	"private": true,
+	"workspaces": [
+		"client",
+		"server"
+	],
+	"scripts": {
+		"dev": "concurrently -n client,server -c cyan,green \"npm --prefix client run dev\" \"npm --prefix server run dev\"",
+		"start": "concurrently -n client,server -c cyan,green \"npm --prefix client run start\" \"npm --prefix server run start\"",
+		"build": "concurrently -n client,server -c cyan,green \"npm --prefix client run build\" \"npm --prefix server run build\"",
+		"server": "npm --prefix server run dev",
+		"client": "npm --prefix client run dev"
+	},
+	"devDependencies": {
+		"concurrently": "9.2.3"
+	}
 }
