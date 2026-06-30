@@ -17,6 +17,8 @@ MONGO_URI=mongodb://<connection_string>
 SERVER_PORT=5000
 ```
 
+> Al iniciar, si no existe un administrador en la base de datos, se crea automáticamente con usuario `admin` y clave `admin`.
+
 ## Instalación
 
 ```bash
@@ -53,14 +55,17 @@ Rungoo/
 │   │   ├── components/       # Componentes por rol (Admin, Chofer, Pasajero, etc.)
 │   │   ├── App.jsx           # Componente raíz
 │   │   ├── AppRouter.jsx     # Definición de rutas
+│   │   ├── App.css           # Estilos globales de la app
 │   │   ├── index.css         # Variables CSS del tema (oscuro/claro)
-│   │   └── index.jsx         # Punto de entrada
+│   │   ├── index.jsx         # Punto de entrada
+│   │   └── config.js         # Configuración del cliente
 │   ├── index.html
 │   └── vite.config.js
 ├── server/                   # Backend Express
-│   ├── index.js              # Rutas de la API
-│   ├── db.js                 # Conexión a MongoDB
-│   └── models/               # Modelos de Mongoose
+│   ├── index.js              # Punto de entrada de la API
+│   ├── db.js                 # Conexión a MongoDB y seed de admin
+│   ├── models/               # Modelos de Mongoose
+│   └── routes/               # Rutas de la API
 ├── .env                      # Variables de entorno (no se versiona)
 ├── .npmrc                    # Configuración de npm
 └── package.json              # Raíz del monorepo
